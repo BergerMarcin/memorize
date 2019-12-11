@@ -7,14 +7,15 @@
 <section class="hero is-bold is-medium">
     <div class="container">
         <div class="hero-body">
-            <h1 class="title">
-                Spring Transitions
-            </h1>
+            <h1 class="title">MemorizeIT!</h1>
+            </br>
             <h2 class="subtitle">
-                Witaj w projekcie <strong>Spring Transitions</strong>.
-                <br/>Znajdziesz tutaj mnóstwo przykładów w jaki sposób mogą być wdrażane kolejne
-                rozwinięcia aplikacji opartej na
-                frameworku Spring i Spring Boot
+                Hello at my the first project <strong>MemorizeIT!</strong>.
+                <br/>Here you may memorize your knowledge at any science field, knowledge, literature or whatever you imagine and need!
+                <br/>MemorizeIT! gives you tools to avoid loosing your knowledge & experience in time
+                <br/>Hopefully mistakes never happen again to teach you more then once with your own MemorizeIT!
+                <br/>
+                <br/><strong>MemorizeIT! commits to memorize your own knowledge!</strong>
             </h2>
         </div>
     </div>
