@@ -21,11 +21,13 @@ public class Note {
     private String htmlText;
     @Column(columnDefinition = "VARCHAR(650)")
     private String plainText;
-    @Column(nullable = false)
-    private Long indexNo;
 
-    //Czy tutaj potrzebna 2-kierunkowa? Raczej tak dla szybszego chodzenia w górę i w dół drzewa. Trudniejszy update
-    @ManyToOne
-    private Level4 level4;
+    @Column(nullable = false)
+    private Long posNo;
+
+    // Field can not be empty, so: optional = false
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "level_id")
+    private Level level;
 
 }

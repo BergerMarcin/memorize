@@ -21,7 +21,7 @@ public class User {
     private String username;
     @Column(nullable = false, unique = true)
     private String email;
-    // czy może się logować
+    //TODO czy może się logować, wprowadzić logikę biznesową
     @Column(nullable = false)
     private Boolean active = Boolean.FALSE;
     @Column(nullable = false)
@@ -29,5 +29,9 @@ public class User {
 
     @ManyToMany
     private Set<Role> roles = new HashSet<>();
+
+    // Very important below. UserAppParam CRUD operations will be done together with User CRUD
+    @OneToOne(mappedBy = "owner", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private UserAppParam userAppParam;
 
 }

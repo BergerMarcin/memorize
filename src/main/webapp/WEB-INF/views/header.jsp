@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 
     <%-- Linki do skryptów js trafią tutaj --%>
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<%-- old version    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>--%>
+    <%-- Below let give tips by IntelliJ --%>
+    <script defer src="/webjars/font-awesome/5.10.1/js/all.min.js"></script>
 
 </head>
 
@@ -46,6 +48,7 @@
                     <c:if test="${pageContext.request.userPrincipal.authenticated}">
                         <div class="content has-text-centered">
                             <p><strong>Hello ${pageContext.request.userPrincipal.name}!</strong></p>
+                            <p>Level: </p>
                         </div>
                     </c:if>
                 </div>

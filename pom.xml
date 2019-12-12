@@ -68,12 +68,31 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--ADDED MANUALY for conitnous compilation -->
+		<!--ADDED MANUALY for continous compilation -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+
+		<!--ADDED MANUALY for tips for CSS @ IntelliJ - 3 below dependecies-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>0.30</version>
+		</dependency>
+		<!-- Zależności do konkretnych bibliotek zewnętrznych -->
+		<!-- Wyszukujemy na: https://www.webjars.org/ -->
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>bulma</artifactId>
+			<version>0.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>5.10.1</version>
 		</dependency>
 
 		<dependency>

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "examples")
-@Getter @Setter @ToString @EqualsAndHashCode(of = "id")
+@Getter @Setter @ToString(exclude = "exampleLines") @EqualsAndHashCode(of = "id")
 public class Example {
 
     @Id
@@ -21,14 +21,16 @@ public class Example {
     private String name;
     @Column(length = 650)
     private String description;
+
     @Column(nullable = false)
-    private Long indexNo;
+    private Long posNo;
 
-    //Czy tutaj potrzebna 2-kierunkowa? Raczej tak dla szybszego chodzenia w górę i w dół drzewa. Trudniejszy update
-    @ManyToOne
-    private Level4 level4;
+    // Field can not be empty, so: optional = false
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "level_id")
+    private Level level;
 
-    @OneToMany
-    private List<ExampleLines> exampleLines = new ArrayList<>();
+    @OneToMany(mappedBy = "example", cascade = {CascadeType.ALL})
+    private List<ExampleLines> exampleLines;
 
 }

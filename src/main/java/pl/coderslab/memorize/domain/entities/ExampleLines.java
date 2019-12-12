@@ -24,10 +24,12 @@ public class ExampleLines {
     private String plainDescr;
     @Column(columnDefinition = "VARCHAR(500)")
     private String htmlDescr;
-    @Column(nullable = false)
-    private Long indexNo;
 
-    //Czy tutaj potrzebna 2-kierunkowa? Raczej tak dla szybszego chodzenia w górę i w dół drzewa. Trudniejszy update
-    @ManyToOne
+    @Column(nullable = false)
+    private Long posNoExample;
+
+    // Field can not be empty, so: optional = false
+    @ManyToOne(optional = false)
+    @JoinColumn (name = "example_id")
     private Example example;
 }

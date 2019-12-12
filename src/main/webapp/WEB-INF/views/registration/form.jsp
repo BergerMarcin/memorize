@@ -33,6 +33,7 @@
                             <form:input path="username" cssClass="input" required="true"/>
                             <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
                             <p class="help">Set your username</p>
+                            <form:errors path="username" element="p" cssClass="help is-danger"></form:errors>
                         </div>
                     </div>
                     <div class="field">
@@ -41,6 +42,7 @@
                             <form:input path="email" cssClass="input" required="true"/>
                             <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                             <p class="help">Set your email</p>
+                            <form:errors path="email" element="p" cssClass="help is-danger"></form:errors>
                         </div>
                     </div>
                     <div class="field">
@@ -49,6 +51,7 @@
                             <form:password path="password" cssClass="input" required="true"/>
                             <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
                             <p class="help">Set your password</p>
+                            <form:errors path="password" element="p" cssClass="help is-danger"></form:errors>
                         </div>
                     </div>
                     <div class="field">
@@ -57,11 +60,13 @@
                             <form:password path="rePassword" cssClass="input" required="true"/>
                             <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
                             <p class="help">Set your password again</p>
+                            <form:errors path="rePassword" element="p" cssClass="help is-danger"></form:errors>
                         </div>
                     </div>
                     <div class="field">
                         <form:label path="termsAcceptance" cssClass="checkbox">
                             <form:checkbox path="termsAcceptance" required="true"/> Accept terms</form:label>
+                        <form:errors path="termsAcceptance" element="p" cssClass="help is-danger"></form:errors>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
@@ -72,7 +77,8 @@
                             <button class="button is-text" type="reset">Reset</button>
                         </div>
                     </div>
-                    <form:errors path="*"/>
+<%--                    All errors printout--%>
+<%--                    <form:errors path="*"/>--%>
 <%--  Przekazuje unikalny klucz z formualrza - bezpieczeństwo --%>
                     <set:csrfInput/>
                 </form:form>
