@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class LevelSiblingDTO {
 
-    private Long levelId;
-    private String levelName;
-    private String levelShortName;
+    private Long siblingId;
+    private String siblingName;
+    private String siblingShortName;
 
 }

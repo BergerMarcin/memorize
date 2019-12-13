@@ -1,5 +1,6 @@
 package pl.coderslab.memorize.services.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.memorize.domain.entities.User;
@@ -13,12 +14,13 @@ import static pl.coderslab.memorize.MemorizeApplication.webAppParamDTOMain;
 
 @Service
 @Transactional
+@Slf4j
 public class WebAppParamServiceImpl implements WebAppParamService {
 
     private LevelDTOListService levelDTOListService;
     private UserRepository userRepository;
     public WebAppParamServiceImpl(LevelDTOListService levelDTOService, UserRepository userRepository) {
-        this.levelDTOListService = levelDTOListService;
+        this.levelDTOListService = levelDTOService;
         this.userRepository = userRepository;
     }
 
@@ -31,19 +33,22 @@ public class WebAppParamServiceImpl implements WebAppParamService {
     public WebAppParamDTO readDBWebAppParamByUserName(String loginUserName) {
         WebAppParamDTO webAppParamDTO = new WebAppParamDTO();
 
-        User user;
-        try {
-            user = userRepository.findFirstByUsername(loginUserName);
-        } catch (Exception e) {
-            user = null;
-        }
+        User user = new User();
+        user = userRepository.findFirstByUsername(loginUserName);
+        log.debug("!!!! Manual Debugger !!!! WebAppParamServiceImpl readDBWebAppParamByUserName: user taken for {}: {}", loginUserName, user);
 
-        if (loginUserName.equals("anonymous") || loginUserName.equals("") || loginUserName == null
+        if (loginUserName.equals("anonymousUser") || loginUserName.equals("") || loginUserName == null
                 || user == null || user.getId()<1L) {
             webAppParamDTO.setUserId(0L);
             webAppParamDTO.setUserName("");
             webAppParamDTO.setUserRoleName("");
-            webAppParamDTO.setLevelDTOList(levelDTOListService.getDBLevelsDTOByUserId(user));
+            User user2 = new User();
+            user2.setId(0L);
+            log.debug("!!!! Manual Debugger !!!! WebAppParamServiceImpl readDBWebAppParamByUserName: " +
+                    "user given to getDBLevelsDTOByUserId: {}", user2);
+            webAppParamDTO.setLevelDTOList(levelDTOListService.getDBLevelsDTOByUserId(user2));
+            log.debug("!!!! Manual Debugger !!!! WebAppParamServiceImpl readDBWebAppParamByUserName: " +
+                    "webAppParamDTO.setLevelDTOList(levelDTOListService.getDBLevelsDTOByUserId(user)) passed!!!!");
             webAppParamDTO.setAlertMessage("Please login to see all data");
         } else {
             webAppParamDTO.setUserId(user.getId());
@@ -52,8 +57,13 @@ public class WebAppParamServiceImpl implements WebAppParamService {
             // webAppParamDTO.setUserRoleName(user.getRoles().stream().findFirst().get().getName());
             webAppParamDTO.setUserRoleName("");
             webAppParamDTO.setLevelDTOList(levelDTOListService.getDBLevelsDTOByUserId(user));
+            log.debug("!!!! Manual Debugger !!!! WebAppParamServiceImpl readDBWebAppParamByUserName webAppParamDTOMain: {}",
+                    webAppParamDTOMain);
+            if (webAppParamDTOMain.getAlertMessage() == null) {
+                webAppParamDTOMain.setAlertMessage("");
+            }
             // Overwrite alert message from actual one
-            if (! webAppParamDTOMain.getAlertMessage().equals("")) {
+            if (!webAppParamDTOMain.getAlertMessage().equals("")) {
                 webAppParamDTO.setAlertMessage(webAppParamDTOMain.getAlertMessage());
             }
         }

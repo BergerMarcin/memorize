@@ -51,7 +51,7 @@ public class DefaultRegistrationServiceImpl implements RegistrationService {
         //TODO Check Set first/registration parameters (levels to be viewed)
         UserAppParam userAppParam = new UserAppParam();
         List<Long> viewLevelsId = new ArrayList<>();
-        viewLevelsId.add(levelRepository.findFirstByParentIsNullOrderByPosNoWithChildren().getId());
+        viewLevelsId.add(levelRepository.findFirstWithChildrenByParentIsNullOrderByPosNo().getId());
 //TODO
 //        userAppParam.setViewLevelsId(viewLevelsId);
         user.setUserAppParam(userAppParam);

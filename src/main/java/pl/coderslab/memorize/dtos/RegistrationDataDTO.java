@@ -1,6 +1,7 @@
 package pl.coderslab.memorize.dtos;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.*;
 
@@ -9,10 +10,10 @@ public class RegistrationDataDTO {
 
     //TODO: @Size blocks username with white spaces (for example "Stefan Paprota" was blocked, "Stefan" was OK)
     //TODO: to verify unique username
-    @NotBlank @Size(min = 3, max = 12)
+    @NotBlank @Size(min = 3, max = 12) @UniqueElements
     private String username;
     //TODO: to verify unique email
-    @NotBlank @Email
+    @NotBlank @Email @UniqueElements
     private String email;
     @NotBlank @Size(min = 4, max = 12)
     private String password;

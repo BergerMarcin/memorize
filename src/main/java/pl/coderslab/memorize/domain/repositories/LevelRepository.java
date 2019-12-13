@@ -11,7 +11,8 @@ public interface LevelRepository extends JpaRepository<Level, Long> {
 
     @EntityGraph(type = EntityGraph.EntityGraphType.LOAD,
             attributePaths = {"children"})
-    Level findFirstByIdWithChildren(Long id);
+    //Level findFirstByIdWithChildren(Long id);
+    Level findFirstWithChildrenById(Long id);
 
     // Shortly: Top / First / Start level
     // Full description:
@@ -22,7 +23,8 @@ public interface LevelRepository extends JpaRepository<Level, Long> {
     //     EntityGraph.EntityGraphType.LOAD, attributePaths = {"children", "notes", "pictures", "examples"}))
     @EntityGraph(type = EntityGraph.EntityGraphType.LOAD,
             attributePaths = {"children"})
-    Level findFirstByParentIsNullOrderByPosNoWithChildren();
+    //Level findFirstByParentIsNullOrderByPosNoWithChildren();
+    Level findFirstWithChildrenByParentIsNullOrderByPosNo();
 
     // Shortly: First position of sublevel/children of passed/send level id (parent level). Any lists is taken
     // Full-precision description:
@@ -31,7 +33,7 @@ public interface LevelRepository extends JpaRepository<Level, Long> {
     //     EntityGraph.EntityGraphType.LOAD, attributePaths = {"children", "notes", "pictures", "examples"}))
     @EntityGraph(type = EntityGraph.EntityGraphType.LOAD,
             attributePaths = {"children"})
-    Level findFirstByParent_IdOrderByPosNoWithChildren(Long parentId);
-
+    //Level findFirstByParent_IdOrderByPosNoWithChildren(Long parentId);
+    Level findFirstWithChildrenByParent_IdOrderByPosNo (Long parentId);
 
 }

@@ -1,5 +1,6 @@
 <%@ taglib prefix="set" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -45,12 +46,33 @@
                 </div>
 
                 ​<div class="navbar-center">
-                    <c:if test="${pageContext.request.userPrincipal.authenticated}">
-                        <div class="content has-text-centered">
-                            <p><strong>Hello ${pageContext.request.userPrincipal.name}!</strong></p>
-                            <p>Level: </p>
-                        </div>
-                    </c:if>
+                    <div class="content has-text-centered">
+                        <c:if test="${pageContext.request.userPrincipal.authenticated}">
+                            <p><strong>Hello ${pageContext.request.userPrincipal.name} (of id = ${webAppParamDTO.userId})!</strong></p>
+                        </c:if>
+                        <c:if test="${not pageContext.request.userPrincipal.authenticated}">
+                            <p><strong>Hello! Please login!</strong></p>
+                        </c:if>
+                        <c:forEach items="${webAppParamDTO.levelDTOList.levelDTOS}" var="levelDTO" varStatus="stat">
+                            <c:if test="${stat.count == 1}">
+                                <span>DataBase: ${levelDTO.levelShortName}&emsp;&emsp;Levels:&emsp;</span>
+                            </c:if>
+                            <c:if test="${stat.count > 1}">
+                                <span>${levelDTO.levelShortName}&emsp;</span>
+<%--                                <form:form action="post" modelAttribute="webAppParamDTO">--%>
+<%--                                    <span>--%>
+<%--                                        sprawdzanie ${levelDTO.levelSiblingDTOS.get(0).siblingShortName}--%>
+<%--                                        <form:select path="levelId" items="${levelDTO.levelSiblingDTOS}"--%>
+<%--                                                     itemLabel="siblingShortName" itemValue="siblingId" multiple="true">--%>
+<%--                                        </form:select>--%>
+<%--                                    <form:select path="level${stat.count - 1}Id" items="${levelDTO.levelSiblingDTOS}"--%>
+<%--                                                   itemLabel="siblingShortName" itemValue="siblingId" multiple="true">--%>
+<%--                                    </form:select>--%>
+<%--                                    </span>--%>
+<%--                                </form:form>--%>
+                            </c:if>
+                        </c:forEach>
+                    </div>
                 </div>
 
                 <div class="navbar-end">
@@ -67,6 +89,7 @@
                             <%--  Wyświetla przyciski jeżeli zweryfikowany (zalogowany) jest użytkownik
                                   Jest to weryfikacja ścieżki --%>
                             <c:if test="${pageContext.request.userPrincipal.authenticated}">
+                                <a class="button is-primary" href="/info"><strong>Show data</strong></a>
                                 <a class="button is-primary" href="/user"><strong>Your account</strong></a>
                                 <form method="post" action="/logout">
                                     <button class="button is-link" type="submit">Logout</button>
