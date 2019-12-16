@@ -1,4 +1,4 @@
-<%@ taglib prefix="set" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -93,14 +93,14 @@
                                 <a class="button is-primary" href="/user"><strong>Your account</strong></a>
                                 <form method="post" action="/logout">
                                     <button class="button is-link" type="submit">Logout</button>
-                                    <set:csrfInput/>
+                                    <sec:csrfInput/>
                                 </form>
                             </c:if>
 <%--                            <sec:authorize access="isAuthenticated()">--%>
 <%--                                <a class="button is-primary" href="/user"><strong>Your account</strong></a>--%>
 <%--                                <form method="post" action="/logout">--%>
 <%--                                    <button class="button is-link" type="submit">Logout</button>--%>
-<%--                                    <set:csrfInput/>--%>
+<%--                                    <sec:csrfInput/>--%>
 <%--                                </form>--%>
 <%--                            </sec:authorize>--%>
                         </div>
