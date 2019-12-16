@@ -26,7 +26,7 @@ public class ExampleLines {
     private String htmlDescr;
 
     @Column(nullable = false)
-    private Long posNoExample;
+    private Long posNo;
 
     // Field can not be empty, so: optional = false
     @ManyToOne(optional = false)

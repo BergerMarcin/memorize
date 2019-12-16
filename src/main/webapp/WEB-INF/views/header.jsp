@@ -89,7 +89,7 @@
                             <%--  Wyświetla przyciski jeżeli zweryfikowany (zalogowany) jest użytkownik
                                   Jest to weryfikacja ścieżki --%>
                             <c:if test="${pageContext.request.userPrincipal.authenticated}">
-                                <a class="button is-primary" href="/info"><strong>Show data</strong></a>
+                                <a class="button is-primary" href="/data"><strong>Show data</strong></a>
                                 <a class="button is-primary" href="/user"><strong>Your account</strong></a>
                                 <form method="post" action="/logout">
                                     <button class="button is-link" type="submit">Logout</button>

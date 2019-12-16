@@ -50,9 +50,9 @@ public class Level {
 
     // In case update or delete level, pictures are created, updated or deleted automatically with level
     @OneToMany(mappedBy = "level", cascade = {CascadeType.ALL})
-    private List<Note> pictures;
+    private List<Picture> pictures;
 
     // In case update or delete level, examples are created, updated or deleted automatically with level
     @OneToMany(mappedBy = "level", cascade = {CascadeType.ALL})
-    private List<Note> examples;
+    private List<Example> examples;
 }

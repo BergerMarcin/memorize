@@ -30,4 +30,5 @@ public class Note {
     @JoinColumn (name = "level_id")
     private Level level;
 
+
 }
